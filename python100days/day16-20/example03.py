@@ -29,7 +29,7 @@ def fib3(num):
     a, b  = 0, 1
     for _ in range(num):
         a, b = b, a + b
-    return a
+        yield  a
 
 def fib(num, results={}):
     """斐波那契数"""
@@ -40,7 +40,7 @@ def fib(num, results={}):
         return results[num]
     except KeyError:
         results[num] = fib(num - 1) + fib(num - 2)
-        results results[num]
+        return results[num]
 
 @contextmanager
 def timer():
@@ -53,3 +53,16 @@ def timer():
 
 def main():
     """主函数"""
+    for val in fib3(20):
+        print(val)
+    gen = fib3(20)
+    for _ in range(10):
+        print(next(gen))
+    for num in range(1, 121):
+        with timer():
+            print(f'{num}: {fib(num)}')
+    print(fac(5))
+    print(fac(-5))
+
+if __name__ == '__main__':
+    main()
