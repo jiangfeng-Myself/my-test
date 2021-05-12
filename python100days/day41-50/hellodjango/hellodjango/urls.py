@@ -1,7 +1,7 @@
 """hellodjango URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from first.views import show_index
+from first.views import show_index1
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('hello/', show_index),
+    path('hello1/', show_index1),
 ]
